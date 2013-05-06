@@ -1,0 +1,22 @@
+<form id="form_game_edit" action="<?= $this->element->getAction(); ?>" method="<?= $this->element->getMethod(); ?>">
+<?= $this->element->asin; ?>
+<p>
+Status<br />
+<?= $this->element->status; ?>
+</p>
+
+<p id="borrower_element">
+On Loan to<br />
+<?= $this->element->borrower; ?>
+</p>
+
+<p id="price_element">
+Price<br />
+$<?= $this->element->price; ?>
+</p>
+
+<p>
+<?= $this->element->submit; ?>
+</p>
+
+</form>

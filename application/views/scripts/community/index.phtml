@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="span-17">
+
+<h1>Follow Gamers Near the Zip Code <?= $this->account->getZip(); ?></h1>
+
+<?php if (count($this->accounts) > 1) { ?>
+
+<table class="community">
+<tr>
+	<th>Username</th>
+	<th>Zip Code</th>
+	<th>Games</th>
+	<th>&nbsp;</th>
+</tr>
+<?php foreach ($this->accounts AS $account) { ?>
+
+<?php if ($account->getId() != $this->account->getId()) { ?>
+  <tr>
+  <td><?= $account->getUsername(); ?></td>
+  <td><?= $account->getZip(); ?></td>
+  <td><?= count($account->getGames()); ?></td>
+  <td><a href="/account/public/username/<?= $account->getUsername(); ?>" class="button blue">View Profile</a></td>
+  </tr>
+<?php } ?>
+
+<?php } ?>
+</table>
+
+<?php } else { ?>
+
+<p>
+There are no registered gamers residing near your zip code.
+</p>
+
+<?php } ?>
+
+</div>
+
+<div id="sidebar" class="span-7 last">
+
+<?php echo $this->render('_book_ad.phtml') ?>
+
+
+
+</div>
+
+</div>

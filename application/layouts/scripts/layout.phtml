@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+<head>
+
+  <title><?= (!is_null($this->pageTitle)) ? $this->pageTitle : "GameNomad - Let Your Games Roam"; ?></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta name="author" content="W.J. Gilmore, LLC" />
+  <meta name="Copyright" content="Copyright (c) 2009-2011 W.J. Gilmore, LLC" />
+  <link rel="stylesheet" href="/css/blueprint/screen.css" type="text/css" media="screen, projection" />
+  <link rel="stylesheet" href="/css/blueprint/print.css" type="text/css" media="print" /> 
+  <link rel="stylesheet" href="/css/styles.css" type="text/css" />
+
+  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+    google.load("jquery", "1.5");
+  </script>
+
+  <script src="/javascript/gamenomad.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+<div id="header">
+<div class="container">
+
+  <div class="span-7">
+  <a href="/"><img src="/images/logo.jpg" alt="GameNomad - Let Your Games Roam" style="padding-top: 10px;" /></a>
+  </div>
+  <div class="span-16 last" style="text-align: right;">
+  	<b>Currently tracking <?= $this->gameCount; ?> games!</b><br />
+    <?php if (! $this->account) { ?>
+    <p><a href="/account/login">Login to your account</a> | <a href="/account/register">Register</a> <span class="small"><a href="/about/register">[Why?]</a></span></p>
+    <?php } else { ?>
+    <p>Welcome back, <a href="/account/"><?= $this->account->getUsername(); ?></a> &middot; <a href="/account/logout">Logout</a></p>
+    <?php } ?>
+
+
+</div>
+  </div>
+</div>
+
+<div id="toc-account" style="padding-bottom: 3px; padding-top: 3px;">
+  <div class="container">
+    <div class="span-24 last" style="height: 0px;">
+      <ul id="nav-account">
+        <li><a href="/">HOME</a></li>
+        <li><a href="/account/">ACCOUNT</a></li>
+        <li><a href="/account/friends">FRIENDS</a></li>
+        <li><a href="/account/games">GAMES</a></li>
+        <li><a href="/community">COMMUNITY</a></li>
+        <li><a href="/about/book">ABOUT</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="toc-game" style="padding-bottom: 4px; padding-top: 3px; border-bottom: 1px solid gray;">
+  <div class="container">
+    <div class="span-24 last" style="height: 0px;">
+      <ul id="nav-game">
+        <li><b>BROWSE GAMES</b>:</li>        
+        <li><a href="/games/platform/360">XBOX 360</a></li>
+        <li><a href="/games/platform/ps3">PS3</a></li>
+        <li><a href="/games/platform/wii">Wii</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="span-24 last">
+
+    <?php
+     if (count($this->messages) > 0) { 
+       printf("<div id='flash'>%s</div>", $this->messages[0]); 
+     }
+    ?>
+
+    <?php echo $this->layout()->content; ?>
+
+  </div>
+</div>
+
+
+<div id="footer">
+  <div class="container">
+    <div class="span-24 last">
+    <p class="tiny">Copyright &copy; 2008-2010 <a href="http://www.wjgilmore.com">W.J. Gilmore, LLC.</a>. All rights reserved. All other trademarks are the property of their respective owners.<br /> <a href="/about/contact">Contact us</a> &middot; <a href="/about/book">About the book behind GameNomad</a><br />
+CERTAIN CONTENT THAT APPEARS ON THIS SITE COMES FROM AMAZON SERVICES LLC. THIS CONTENT IS PROVIDED 'AS IS' AND IS SUBJECT TO CHANGE OR REMOVAL AT ANY TIME.<br />
+Amazon and the Amazon logo are trademarks of Amazon.com, Inc. or its affiliates
+</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<div class="container">
+<div class="span-15">
+
+  <h1>Your Account Profile</h1>
+
+<p>
+Welcome back,  <?= $this->account->getUsername(); ?>. Our records indicate that you own 
+<a href="/account/games"><?= $this->Pluralizer(count($this->account->getGames()), "game", "games"); ?></a>
+and are following <a href="/account/friends"><?= $this->Pluralizer(count($this->account->getFriends()), "gamer", "gamers"); ?></a>.
+</p>
+
+<p>
+Use the menu on the right to manage your profile.
+</p>
+
+</div>
+
+<div class="span-7 last">
+ 
+<?php echo $this->render('_menu_profile.phtml') ?>
+
+</div>
+
+</div>

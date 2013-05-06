@@ -1,0 +1,312 @@
+html, body {
+  height: 100%; 
+  margin: 0px; 
+  padding: 0px; 
+  font: 13px/20px Verdana, "Helvetica Neue", Helvetica, Arial, sans-serif
+}
+
+.container {
+  min-height: 100%;
+  position:relative; /* needed for footer positioning*/
+  height:auto !important; /* real browsers */
+  height:100%; /* IE6: treated as min-height*/	
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 1.8em;
+  font-family: Verdana;
+}
+
+#home_splash {
+  border: 1px solid black;
+  margin-bottom: 10px;	
+}
+
+.game h1 {
+    color: #202020;
+    font-size: 32px;
+    font-weight: bold;
+    line-height: normal !important;
+    margin-bottom: 10px;
+}
+
+.buy h3 em {
+    color: #999999;
+    float: left;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: normal;
+    height: auto;
+    line-height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 12px;
+}
+
+.buy h3 span {
+    color: #202020;
+    float: left;
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 80%;
+    margin-right: 5px;
+}
+
+.location-title {
+  margin-bottom: 2px;
+}
+
+h3 {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+#header {
+  width: 100%;
+  height: 75px;
+  background-color: black;
+  background-image:url('http://dev2.gamenomad.com/images/bg.jpg');
+  color: white;
+}
+
+#header a {
+  color: white;
+}
+
+#flash, #errors {
+  background-color: #0061CE;
+  color: white;
+  font-weight: bold;
+  border: 1px solid black;
+  width: 50%;
+  margin: 3px;
+  padding: 3px;
+}
+
+.bullet li {
+  list-style-type: disc;
+list-style-position: outside;
+margin-left: 10px; 
+}
+
+input[type="text"], input[type="password"], input.text, input.title, textarea, select {
+    background-color: #FFFFFF;
+    border: 1px solid #000;
+}
+
+input[type=submit] {
+  background-color: #0061CE;
+  color: white;
+  padding: 3px;
+  font-weight: bold;
+}
+
+#toc-account {
+  width: 100%;
+  height: 20px;
+  background-color: #0061CE;
+  color: white;
+  margin-bottom: 0px;
+  border-bottom: 1px solid gray;
+}
+
+#nav-account li
+{
+  display: inline;
+  list-style-type: none;
+  padding-right: 20px;
+}
+
+#nav-account li a {
+  color: #00F0FF;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#toc-game {
+  width: 100%;
+  height: 20px;
+  background-color: #241F20;
+  color: white;
+  margin-bottom: 10px;
+}
+
+#nav-game li
+{
+  display: inline;
+  list-style-type: none;
+  padding-right: 20px;
+}
+
+#nav-game li a {
+  color: #FFF;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#nav {
+  color: #777;
+}
+
+#nav li {
+  float:left;
+  margin:0 4px 0 0;
+  background-color: #FF9900;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border: 4px solid white;
+  margin-right: 5px;
+  font-size: 1.0em;
+  font-weight: bold;
+}
+
+#nav li a {
+	float: left;
+	padding: 5px 10px;
+	text-decoration: none;
+	color: #fff;
+}
+
+#textarea_message {
+  width: 400px;
+  height: 150px;
+}
+
+.game_cover {
+  float: left;
+  border: 1px solid black;
+  margin: 3px 10px 3px 3px;
+  width: 113px;
+  height: 160px;
+}
+
+.game_cover_s {
+  float: left;
+  border: 1px solid black;
+  margin: 3px;
+}
+
+.game-sidebar {
+  padding: 3px;
+  width: 100%;
+  border-bottom: 1px dotted #C0C0C0;
+}
+
+.account-sidebar {
+  float: left;
+  padding: 5px;
+  width: 100%;
+  border-bottom: 1px solid #C0C0C0;
+}
+
+#sidebar > h3 {
+  color: #0061CE;
+}
+
+#product_grid {
+	list-style-type: none;
+	width: 100%;
+	font-size: .75em;
+	padding: 0;
+}
+
+#product_grid li {
+	display: block;
+	float: left;
+	margin: 0 10px 10px 0;
+	width: 120px;
+	height: 200px;
+	padding: 2px;
+	text-align: center;
+}
+
+.disabled {
+  color: gray;
+}
+
+#game_edit_form {
+  width: 550px; 
+  height: 300px;
+  background-color: #FF9900;
+  color: white;
+  font-weight: bold;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border: 4px solid black;  
+  padding: 5px;  
+}
+
+#simplemodal-overlay {
+  background-color:#000;
+}
+
+#community_map {
+  border: 1px solid black; 
+  margin-left: auto; 
+  margin-right: auto; 
+  width: 100%; 
+  width:900px; 
+  height:300px;
+}
+
+#search {
+  color: #C0C0C0;
+  padding: 2px;
+}
+
+.tiny {
+  font-size: .75em;
+}
+
+#paginator {
+  font-size: 1.0em;
+}
+
+/**
+ * Great CSS buttons from:
+ * http://devgrow.com/super-simple-css-buttons/
+ *
+ **/
+
+.button {
+	padding: 5px 10px;
+	display: inline;
+	background: #777;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	font-weight: bold;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	text-shadow: 1px 1px #666;
+	text-decoration: none;
+}
+
+.button:hover {
+    color: #fff;
+}
+    
+.button.red { background-color: #e50000; }
+.button.green { background-color: #58aa00; }
+.button.blue { background-color: #0061CE; }
+
+.pager {
+  width: 100%;	
+  clear: both;
+  float: left;
+  padding: 5px 0px 10px 0px;
+}
+
+table.community {
+  
+}
+
+.community th {
+  font-size: 1.3em;	
+}
+
+.community tr {
+  border-bottom: 1px dotted black;
+}

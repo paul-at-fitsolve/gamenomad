@@ -1,0 +1,21 @@
+<?php 
+
+$email = <<< email
+Dear {$account->getUsername()},
+
+Your GameNomad account has been created! To complete registration, click on the below link to 
+confirm your e-mail address.
+
+http://gamenomad.wjgilmore.com/account/confirm/key/{$account->getRecovery()}
+
+Once confirmed, you'll be able to access exclusive GameNomad features!
+
+Thank you!
+The GameNomad Team
+
+Questions? Contact us at gamenomad@wjgilmore.com
+http://gamenomad.wjgilmore.com/
+
+email;
+
+?>

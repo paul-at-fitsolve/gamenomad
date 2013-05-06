@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="span-17">
+
+<a href="/about/contest"><img src="/images/home.png" id="home_splash" alt="" /></a>
+
+<h1>Recently Added Games</h1>
+
+<ul id="product_grid">
+
+<?php foreach ($this->recentGames AS $game) { ?>
+
+<li>
+  <a href="/games/<?= $game->getAsin(); ?>">
+    <img src="<?= $game->getMedium(); ?>" class="game_cover" alt="" />
+  </a><br />
+  <b><a href="/games/<?= $game->getAsin(); ?>"><?= $game->getName(); ?></a></b>
+</li>
+
+<?php } ?>
+</ul>
+
+</div>
+
+<div id="sidebar" class="span-7 last">
+
+<?php echo $this->render('_book_ad.phtml') ?>
+
+<h3>HOT Xbox 360 GAMES</h3>
+
+<?php foreach ($this->hotGames AS $hotGame) { ?>
+
+<div class="game-sidebar">
+<b><a href="/games/<?= $hotGame->getGame()->getAsin(); ?>"><?= $hotGame->getGame()->getName(); ?></a></b><br /> 
+<b>Sales Rank</b>: #<?= $hotGame->getRank(); ?><br />
+</div>
+
+<?php } ?>
+
+</div>
+
+</div>

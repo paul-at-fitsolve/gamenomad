@@ -1,0 +1,43 @@
+<div class="container">
+<div class="span-17">
+
+<h1>Your Games Library</h1>
+
+<?php if (count($this->account->getGames()) > 0) { ?>
+
+<p>
+Your library consists of <?= $this->Pluralizer(count($this->account->getGames()), "game", "games"); ?>.
+</p>
+
+<ul id="product_grid">
+
+<?php foreach ($this->account->getgames() AS $game) { ?>
+
+<li>
+  <a href="/games/<?= $game->getAsin(); ?>">
+    <img src="<?= $game->getMedium(); ?>" class="game_cover" alt="" />
+  </a><br />
+  <b><a href="/games/<?= $game->getAsin(); ?>"><?= $game->getName(); ?></a></b>
+</li>
+
+<?php } ?>
+</ul>
+
+<?php } else { ?>
+
+<p>
+Your library currently does not contain any games.
+</p>
+
+<?php } ?>
+
+</div>
+
+<div id="sidebar" class="span-7 last">
+
+<?php echo $this->render('_menu_profile.phtml') ?>
+
+</div>
+
+
+</div>

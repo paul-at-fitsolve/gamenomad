@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="span-17">
+
+<h1>GameNomad Gamers You Are Following</h1>
+
+<?php if (count($this->friends) == 0) { ?>
+
+<p>
+You are not currently following any gamers. <a href="/account/invite">Invite a friend to join.</a>
+</p>
+
+<?php } else { ?>
+
+  <table class="community">
+  <tr>
+  	<th>Username</th>
+  	<th>Zip Code</th>
+  	<th>Games</th>
+  	<th>&nbsp;</th>
+  </tr>
+  <?php foreach ($this->friends AS $friend) { ?>
+  
+    <tr>
+    <td><?= $friend->getUsername(); ?></td>
+    <td><?= $friend->getZip(); ?></td>
+    <td><?= count($friend->getGames()); ?></td>
+    <td><a href="/account/public/username/<?= $friend->getUsername(); ?>" class="button blue">View Profile</a></td>
+    </tr>
+  
+  <?php } ?>
+  </table>
+
+<?php } ?>
+
+</div>
+
+<div id="sidebar" class="span-7 last">
+
+<?php echo $this->render('_menu_profile.phtml') ?>
+
+</div>
+
+</div>

@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="span-17">
+<h1>Hottest <?= $this->platform->getName(); ?> Games</h1>
+
+<p>
+GameNomad tracks the popularity of video games by continuously monitoring Amazon.com sales trends. 
+The following list identifies the hottest <?= $this->platform->getName(); ?> games as of the past 24 hours.
+</p>
+
+<table>
+<tr>
+<th>Game</th>
+<th>Sales Rank</th>
+<th>Trend</th>
+</tr>
+
+<?php foreach ($this->games AS $game) { ?>
+
+<tr>
+<td><a href="/games/<?= $game->getGame()->getAsin(); ?>/"><?= $game->getGame()->getName(); ?></a></td>
+<td><?= $game->getRank(); ?></td>
+<td>$<?= $game->getGame()->getPrice(); ?></td>
+</tr>
+
+<?php } ?>
+</table>
+
+</div>
+
+<div id="sidebar" class="span-7 last">
+
+<?php echo $this->render('_book_ad.phtml') ?>
+
+
+
+</div>

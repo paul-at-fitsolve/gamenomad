@@ -1,0 +1,66 @@
+<div class="container">
+<div class="span-15 game">
+
+  <h1>
+    <?= $this->game->getName(); ?><a href="/games/platform/<?= $this->game->getPlatform()->getAbbreviation(); ?>">
+    <img src="/images/<?= $this->game->getPlatform()->getAbbreviation(); ?>.png" alt="<?= $this->game->getPlatform()->getName(); ?>" style="padding-left: 10px;" /></a>
+  </h1>
+  
+  <img src="<?= $this->game->getMedium(); ?>" class="game_cover" />
+  
+  <div class="buy">
+    <h3><em>$</em><span><?= $this->game->getPrice(); ?></span></h3>  
+  </div>
+  <div>
+  	<a href="http://www.amazon.com/exec/obidos/ASIN/<?= $this->game->getAsin(); ?>/<?= $this->associateID; ?>"><img src="/images/amazon_buy_now.gif" alt="Buy now" /></a>
+  </div>  
+
+  <b>Publisher</b>: <?= $this->game->getPublisher(); ?><br />
+  <b>Platform</b>: <a href="/games/platform/<?= $this->game->getPlatform()->getAbbreviation(); ?>"><?= $this->game->getPlatform()->getName(); ?></a><br />
+  <b>Release Date</b>: <?= $this->ReleaseDate($this->game->getRelease()); ?><br />
+  <b>Current Amazon.com Sales Rank</b>: #<?= number_format($this->game->getLatestRank()); ?><br />
+
+<?php if (! $this->account) { ?>
+
+<p style="font-size: .75em;">
+Do you own <b><?= $this->game->getName(); ?></b>? 
+Add it to your library by <a href="/accounts/login">logging into</a> GameNomad account. Not a member?
+Joining is free and only takes a moment! <a href="/accounts/register">Register now</a>! 
+</p>
+
+<?php } else { ?>
+
+  <?php if ($this->account->ownsGame($this->game)) { ?>
+    <p style="margin: 10px;">
+    <a href="/games/associate/do/remove/asin/<?= $this->game->getAsin(); ?>" class="button blue">Remove game from your library</a>
+    </p>
+  <?php } else { ?>
+    <p style="margin: 10px;">
+    <a href="/games/associate/do/add/asin/<?= $this->game->getAsin(); ?>" class="button blue">Add game to your library</a>
+    </p>  
+  <?php } ?>
+
+<?php } ?>
+
+</div>
+
+<div class="span-8 last">
+
+<img src="/images/book_ad.png" alt="" />
+
+<?php echo $this->render('_book_ad.phtml') ?>
+
+<h3>HOT <?= $this->game->getPlatform()->getName(); ?> GAMES</h3>
+
+<?php foreach ($this->hotGames AS $hotGame) { ?>
+
+<div class="game-sidebar">
+<b><a href="/games/<?= $hotGame->getGame()->getAsin(); ?>"><?= $hotGame->getGame()->getName(); ?></a></b><br /> 
+<b>Sales Rank</b>: #<?= $hotGame->getRank(); ?><br />
+</div>
+
+<?php } ?>
+
+</div>
+
+</div>

@@ -1,0 +1,143 @@
+Easy PHP Websites with the Zend Framework
+Copyright 2009-2011 W. Jason Gilmore
+W.J. Gilmore, LLC
+
+GameNomad is the companion project to the book, "Easy PHP Websites with the Zend Framework", authored by Jason Gilmore and published by W.J. Gilmore, LLC. While you may install the project on a *private* server and otherwise use the code for learning purposes, you are not permitted to use the GameNomad name nor logo for any purposes whether personal or commercial.
+
+Questions? Contact Jason at support@wjgilmore.com.
+
+========================
+INSTALLATION INSTRUCTIONS
+========================
+
+As book projects go, GameNomad is one of the more complex and complete you'll find anywhere. It contains a bunch of useful code which will help you master the Zend Framework in ways far beyond what can be covered in a single book. 
+
+Because the project relies on quite a few moving parts, including a database, the Amazon Product Advertising API, numerous third-party libraries, including notably Doctrine 2 and the php-google-map-api class, and SMTP server configuration, I suggest brewing a bit of coffee before patiently working through the following instructions. Of course, if you have any questions, please e-mail me at wj@wjgilmore.com.
+
+========================
+STEP #1. INSTALL THE ZEND FRAMEWORK
+========================
+
+Once the Zend Framework is installed, follow the instructions found in Chapter 2 to create a virtual host. Place the GameNomad project directory contents in the virtual host directory.
+
+========================
+STEP #2. INSTALL DOCTRINE 2
+========================
+
+Although the book devotes an entire chapter to the Zend Framework's Zend_Db component, 
+the sample project is built atop Doctrine 2. Rather than distribute the Doctrine 2 library as part of the GameNomad project it seems more practical for readers to install the latest stable version. Follow these instructions to do so:
+
+1. Clone Doctrine 2
+
+$ git clone git://github.com/doctrine/doctrine2.git doctrine2-orm
+
+2. Copy the following three directories into a directory named Doctrine found in the GameNomad project's library directory:
+
+lib/Doctrine/ORM
+lib/vendor/doctrine-common/lib/Doctrine/Common
+lib/vendor/doctrine-dbal/lib/Doctrine/DBAL
+
+3. Copy the following directory into the GameNomad library directory:
+
+lib/vendor/Symfony
+
+When done, your library directory should look like this:
+
+library/
+  Doctrine/
+    Common/
+    DBAL/
+    ORM/
+  Symfony/
+  WJG/
+
+========================
+STEP #3. INSTALL THE PHP-GOOGLE-MAP-API LIBRARY AND BLUEPRINT CSS FRAMEWORK
+========================
+
+The php-google-map-api library is used by the GameNomad website to geocode a user's coordinates according to his zip code. Install the library by navigating to the following URL and downloading the latest release:
+
+http://code.google.com/p/php-google-map-api/
+
+Unzip the release and place the GoogleMap.php file in the GameNomad library directory.
+
+The Blueprint CSS framework is a great CSS framework used extensively throughout the GameNomad website. Download Blueprint from http://www.blueprintcss.org/ and place the blueprint directory in public/css.
+
+========================
+STEP #4. CREATE THE PROJECT DATABASE
+========================
+
+GameNomad requires a MySQL database. You can call this database whatever you please; just be sure to remember the name for the next step.
+
+$ mysqladmin -u root -p create database gamenomad
+
+========================
+STEP #5. BUILD THE SCHEMA 
+========================
+
+GameNomad depends upon six database tables. Load these tables to the database you created in STEP #3 by executing the following command:
+
+$ mysql -u root -p YOUR_DATABASE_NAME < /PATH/TO/application/scripts/schema.sql 
+
+========================
+STEP #6. UPDATE THE configs/application.ini FILE
+========================
+
+The application.ini file is used by the Zend Framework as a central location for 
+storing application configuration parameters, including database connection variables, API keys,
+and other important settings. You'll need to update this file to reflect your specific configuration information.
+
+========================
+STEP #7. SEED THE GAMENOMAD DATABASE
+========================
+
+Because it would be a violation of the Amazon Product Advertising API's terms of service
+to make content retrieved from the Amazon.com database available to others in a
+format such as a database table dumpfile, I've opted to instead provide you with a seeder
+file which will communicate with the Amazon Product Advertising API to load a selection of 
+300 games to your local database based on the list of ASINs (Amazon Standard 
+Identification Number) found in the file asins.txt. AFTER having completed the previous 
+five steps in their entirety (including notably creating an Amazon Product Advertising API 
+account, updating the application.ini file, and configuring the GameNomad database), execute the following script, found in the GameNomad project's application/scripts directory: 
+
+$ php seed.php
+
+YOU ONLY NEED TO RUN THIS SCRIPT ONCE.
+
+This script will require a minimum 15 minutes to run because it sleeps for 3 seconds 
+after retrieving each sales rank. Amazon does not like it when you bang too hard on 
+their servers, and I suggest not crossing them unless you want your API account disabled.
+
+Currently this script only seeds games associated with the Xbox 360, Nintendo Wii, and 
+PlayStation 3. This is because if you open seed.php in your editor you'll see that the
+script requires a bit of conditional logic to convert the platform names to the associated
+records found in the platforms table. It's certainly possible to extend this script to also
+allow you to seed games for the PSP, PC, and other platforms (you'll also need to add those
+platforms to the platforms table and adjust the layout.phtml file), and perhaps I'll do so
+in the future, but no guarantees.
+
+========================
+STEP #8. Retrieve the latest sales ranks
+========================
+
+You'll want to run the update_sales_ranks.php script once daily, updating the 
+GameNomad database's ranks table to reflect the latest sales ranks. The GameNomad
+seeder script (application/scripts/seed.php) will add 300 games to your database,
+meaning this script will take at a minimum 15 minutes to run because the script
+sleeps for 3 seconds after retrieving each sales rank. Amazon does not like it when
+you bang too hard on their servers, and I suggest not crossing them unless you want
+your API account disabled.
+
+To run this script at 3am each morning add the following line to your crontab file
+
+0 3 * * * /PATH/TO/application/scripts/update_sales_ranks.php
+
+Other helper scripts are available in the application/scripts directory, including update_images.php, update_prices.php, and update_publishers.php. The purposes of these scripts should be self-explanatory.
+
+========================
+QUESTIONS?
+========================
+
+E-mail me with questions at wj@wjgilmore.com!
+
+Jason

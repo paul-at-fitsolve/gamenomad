@@ -1,0 +1,36 @@
+<div class="container">
+<div class="span-15">
+
+<h1><?= $this->publicProfile->getUsername(); ?>'s Public Profile</h1>
+
+<p>
+GameNomad user <b><?= $this->publicProfile->getUsername(); ?></b> resides in the <b><?= $this->publicProfile->getZip(); ?></b> zip code and owns <?= $this->Pluralizer(count($this->publicProfile->getGames()), 'game', 'games'); ?>. 
+</p>
+
+<p>
+<a href="/account/associate/do/follow/username/<?= $this->publicProfile->getUsername(); ?>" class="button blue">Follow <?= $this->publicProfile->getUsername(); ?></a>
+</p>
+
+<h3><?= $this->publicProfile->getUsername(); ?>'s Game Library</h3>
+
+<ul id="product_grid">
+
+<?php foreach ($this->publicProfile->getGames() AS $game) { ?>
+
+<li>
+  <a href="/games/<?= $game->getAsin(); ?>/"><img src="<?= $game->getMedium(); ?>" class="game_cover" alt="" /></a><br />
+  <b><a href="/games/<?= $game->getAsin(); ?>/"><?= $game->getName(); ?></a></b>
+</li>
+
+<?php } ?>
+</ul>
+
+</div>
+
+<div class="span-7 last">
+
+<?php echo $this->render('_book_ad.phtml') ?>
+
+</div>
+
+</div>
